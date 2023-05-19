@@ -7,10 +7,13 @@ function App() {
 
   return (
     <div className="myContainer">
+      {/* Navbar */}
       <NavbarTop />
+      {/* Outlet */}
       <div className="min-h-[calc(100vh-130px)]">
         <Outlet />
       </div>
+      {/* Footer */}
       <Footer />
     </div>
   )
