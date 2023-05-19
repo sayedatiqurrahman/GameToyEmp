@@ -2,22 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     @apply text-white
 }
+
 .myContainer {
     @apply max-w-[1400px] md:w-[90%] w-[95%] mx-auto
 }
-.active{
-    @apply  border-b-2 transition-all bg-transparent ;
+
+.active {
+    @apply border-b-2 transition-all bg-transparent;
 }
-.default{
+
+.default {
     @apply mx-2 font-semibold hover:border-b-2 rounded-full
 }
+
 .fontA {
     font-family: 'Josefin Sans', sans-serif;
 }
 
 .fontB {
     font-family: 'Style Script', cursive;
+}
+
+.CustomDrop {
+    filter: drop-shadow(0.6rem 0.6rem 1rem rgb(18, 1, 46));
 }

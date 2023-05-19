@@ -6,14 +6,14 @@ const Gallery = () => {
     const [gallery, setGallery] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/gallery')
+        fetch('http://server-liard-nine.vercel.app/gallery')
             .then(res => res.json()).then(data => setGallery(data))
     }, [])
     const gallery1 = gallery.slice(0, 10)
     const gallery2 = gallery.slice(11, 19)
     return (
-        <div id='gallery' >
-           
+        <div className='bg-black rounded-xl'  >
+
             {/* Gallery slider Showcase */}
             <SliderOfGallery gallery1={gallery1} />
             <div className='-mt-72'>
