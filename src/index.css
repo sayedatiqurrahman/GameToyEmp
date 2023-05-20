@@ -35,10 +35,8 @@ body {
     color: rgb(228, 228, 228) !important;
     bottom: -1px !important;
     /* border-bottom: none !important; */
- 
+
 }
-
-
-.react-tabs__tab{
+.react-tabs__tab {
     bottom: -1px;
 }

@@ -3,6 +3,7 @@ import Banner from '../Components/Shared/Home/Banner';
 import Gallery from '../Components/Shared/Home/Gallery';
 import Charecter from '../assets/mobile-frame_1.gif'
 import ShopByCategory from '../Components/Shared/Home/ShopByCategory';
+import gostAni from '../assets/image03.gif';
 
 const Home = () => {
     return (
@@ -19,6 +20,10 @@ const Home = () => {
             </div>
 
 
+            <div className='flex flex-wrap justify-center gap-6 '>
+            <img className='h-[300px] -ml-36 -mt-48' src={gostAni} alt="" />
+            <h1 className='fontA text-4xl  '>Find Your Favorite Toys</h1>
+           </div>
             <div className='mt-130px'>
                 <ShopByCategory />
             </div>

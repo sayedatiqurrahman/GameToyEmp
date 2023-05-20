@@ -9,6 +9,7 @@ import AddToys from './Pages/AddToys.jsx'
 import MyToys from './Pages/MyToys.jsx'
 import Blog from './Pages/Blog.jsx'
 import Home from './Pages/Home.jsx'
+import ToysDetails from './Pages/ToysDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,11 +20,17 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />
-        
+
+      },
+      {
+        path: '/toysDetails/:id',
+        element: <ToysDetails />,
+        loader: ({ params }) => fetch(`https://server-liard-nine.vercel.app/ToyDetails/${params.id}`)
       },
       {
         path: '/allToys',
-        element: <AllToys />
+        element: <AllToys />,
+        loader: () => fetch(`https://server-liard-nine.vercel.app`)
       },
       {
         path: '/addToys',

@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Footer from "./Components/Shared/Footer"
 import NavbarTop from "./Components/Shared/NavbarTop"
-
+import { Toaster } from 'react-hot-toast';
 function App() {
 
 
@@ -12,6 +12,8 @@ function App() {
       {/* Outlet */}
       <div className="min-h-[calc(100vh-130px)]">
         <Outlet />
+        {/* Toast */}
+        <Toaster />
       </div>
       {/* Footer */}
       <Footer />
