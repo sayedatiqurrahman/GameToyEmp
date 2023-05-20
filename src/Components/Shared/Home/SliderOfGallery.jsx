@@ -27,11 +27,11 @@ const SliderOfGallery = ({ gallery1, gallery2 }) => {
                 className="mySwiper"
             >
                 {
-                    gallery1?.map(show => <SwiperSlide><img className='h-full w-full' src={show.pictureURL} alt="" /></SwiperSlide>)
+                    gallery1?.map(show => <SwiperSlide key={show._id}><img className='h-full w-full' src={show.pictureURL} alt="" /></SwiperSlide>)
                 }
                 <div >
                     {
-                        gallery2?.map(show => <SwiperSlide><img className='h-full w-full' src={show.pictureURL} alt="" /></SwiperSlide>)
+                        gallery2?.map(show => <SwiperSlide key={show._id}><img className='h-full w-full' src={show.pictureURL} alt="" /></SwiperSlide>)
                     }
                 </div>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from '../Components/Shared/Home/Banner';
 import Gallery from '../Components/Shared/Home/Gallery';
 import Charecter from '../assets/mobile-frame_1.gif'
+import ShopByCategory from '../Components/Shared/Home/ShopByCategory';
 
 const Home = () => {
     return (
@@ -19,7 +20,7 @@ const Home = () => {
 
 
             <div className='mt-130px'>
-                
+                <ShopByCategory />
             </div>
         </div>
     );
