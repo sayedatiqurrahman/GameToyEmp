@@ -6,7 +6,7 @@ const ShopByCategory = () => {
     const [data2, setData2] = useState([])
     const [data, setData] = useState([])
     useEffect(() => {
-        fetch('http://server-liard-nine.vercel.app/shopByCategory')
+        fetch('https://server-liard-nine.vercel.app/shopByCategory')
             .then(res => res.json()).then(data => {
                 setData2(data)
                 setData(data)

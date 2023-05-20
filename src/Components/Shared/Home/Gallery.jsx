@@ -6,7 +6,7 @@ const Gallery = () => {
     const [gallery, setGallery] = useState([])
 
     useEffect(() => {
-        fetch('http://server-liard-nine.vercel.app/gallery')
+        fetch('https://server-liard-nine.vercel.app/gallery')
             .then(res => res.json()).then(data => setGallery(data))
     }, [])
     const gallery1 = gallery.slice(0, 10)
