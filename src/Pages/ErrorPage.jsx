@@ -6,7 +6,7 @@ import { Link, useRouteError } from 'react-router-dom';
 const ErrorPage = () => {
     const { data, status, statusText } = useRouteError()
     return (
-        <div className='mx-auto  absolute -top-32'>
+        <div className='mx-auto  absolute top-10 lg:-top-32'>
             <Lottie className=""
                 options={{
                     animationData: animationData2,
