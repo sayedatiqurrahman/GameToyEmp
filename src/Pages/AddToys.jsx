@@ -2,28 +2,37 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 
 const AddToys = () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        fetch('http://localhost:5000/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+
+        }).then(response => response.json()).then(data => console.log(data));
+        reset()
+    };
     return (
-        <div className='w-[90%] font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%]'>
+        <div className='w-[90%] font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex gap-2 mb-2'>
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full"  {...register("name")} />
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full" {...register("sellerName")} />
+                    <input required type='text' placeholder="Enter Toys Name..." className="input input-bordered rounded-full border-2 w-full"  {...register("name")} />
+                    <input required type='text' placeholder="Enter Seller Name..." className="input input-bordered rounded-full border-2 w-full" {...register("sellerName")} />
                 </div>
                 <div className='flex gap-2 mb-2'>
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full " {...register("sellerEmail")} />
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full " {...register("subCategory")} />
+                    <input required type='email' placeholder="Enter Seller Email..." className="input input-bordered rounded-full border-2 w-full " {...register("sellerEmail")} />
+                    <input required type='text' placeholder="Enter Sub-Category..." className="input input-bordered rounded-full border-2 w-full " {...register("subCategory")} />
                 </div>
                 <div className='flex gap-2 mb-2 w-full'>
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full" {...register("availableQuantity")} />
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2 w-full" {...register("price")} />
-                    <input placeholder="Type here" className="input input-bordered rounded-full border-2  w-full" {...register("rating")} />
+                    <input type='tel' placeholder="Available Quantity..." className="input input-bordered rounded-full border-2 w-full" {...register("availableQuantity")} />
+                    <input required type='tel' placeholder="Enter Toy's Price" className="input input-bordered rounded-full border-2 w-full" {...register("price")} />
+                    <input required type='tel' placeholder="Toy's Rating Number" className="input input-bordered rounded-full border-2  w-full" {...register("rating")} />
                 </div>
+                <input required type='url' placeholder="Enter Toy's Picture URL" className="input mb-2 input-bordered rounded-full border-2  w-full" {...register("pictureURL")} />
+                <input required placeholder="Enter Toy's Description" className=" px-5 text-center py-4 input resize-none input-bordered w-full rounded-full  border-2 h-20" {...register("detailDescription")} />
 
-                <textarea placeholder="Type here" className="input input-bordered w-full rounded-full pt-6 border-2 h-20" {...register("detailDescription")} />
-
-                <input type="submit" />
+                <input className='mt-2 btn btn-outline border-2 w-[90%] md:w-1/2 rounded-full text-xl fontA ' type="submit" />
             </form>
         </div>
     );
