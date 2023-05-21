@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA5UCjPgVEmo0B9QT1XRDy8NKc7spdIzUU",
-    authDomain: "gametoyemp.firebaseapp.com",
-    projectId: "gametoyemp",
-    storageBucket: "gametoyemp.appspot.com",
-    messagingSenderId: "345988049191",
-    appId: "1:345988049191:web:bd7197fe67e26a025ba102"
+    apiKey: import.meta.env.APIKEY,
+    authDomain: import.meta.env.AUTHDOMAIN,
+    projectId: import.meta.env.PROJECTID,
+    storageBucket: import.meta.env.STORAGEBUCKET,
+    messagingSenderId: import.meta.env.MESSAGINGSENDERID,
+    appId: import.meta.env.APPID,
 };
 
 // Initialize Firebase
