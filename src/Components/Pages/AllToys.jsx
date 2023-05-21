@@ -19,9 +19,22 @@ const AllToys = () => {
             console.log(data);
         })
 
-
         form.reset()
     }
+
+    const handleChangeSearch = (e) => {
+        const searchText = e.target.value;
+
+        if (searchText === '' || searchText === ' ') {
+            setToys(loadedDataToys)
+        }
+
+        fetch(`https://server-liard-nine.vercel.app/search/${searchText}`).then(res => res.json()).then(data => {
+            setToys(data)
+            console.log(data);
+        })
+    }
+
     return (
 
 
@@ -33,7 +46,7 @@ const AllToys = () => {
             </div>
 
             <form onSubmit={handleSearch} className='my-[130px] w-full max-w-xs mx-auto relative'>
-                <input type="text" name='text' placeholder="Type here..." className="input input-bordered border-2 border-slate-500 w-full max-w-xs rounded-full" />
+                <input onChange={handleChangeSearch} type="text" name='text' placeholder="Type here..." className="input input-bordered border-2 border-slate-500 w-full max-w-xs rounded-full" />
 
                 <input className='btn btn-outline bg-slate-300 text-black px-8 rounded-full text-lg absolute top-0 right-0' type="submit" name="search" id="" value={'Search'} />
             </form>

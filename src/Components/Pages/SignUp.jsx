@@ -1,22 +1,52 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from 'lottie-react-web';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import { FcGoogle } from "react-icons/fc";
 import animationData from '../../../public/login-orange.json';
+import { AuthContext } from '../Provider/AuthProvider';
+import { getAuth, updateProfile } from "firebase/auth";
+import app from '../../../firebase.config';
+const auth = getAuth(app);
 const SignUp = () => {
     const { register, handleSubmit, reset } = useForm();
-    const onSubmit = data => { console.log(data); }
+    const { registerUser,  loginWithGoogle} = useContext(AuthContext)
+
+    const onSubmit = data => {
+
+        console.log(data);
+        const email = data.email;
+        const password = data.password;
+        const name = data.name;
+        const img = data.img;
+        registerUser(email, password, name, img).then(data => {
+            updateProfile(auth.currentUser, {
+                displayName: name, photoURL: img
+            }).then(() => {
+                toast.success('Your account Successfully registered')
+            }).catch((error) => {
+                // An error occurred
+                toast.error(error.message)
+            });
+
+            console.log(data)
+        }).catch(err => toast.error(err.message));
+        reset()
+    }
+
+const handleGoogle = () => {
+        loginWithGoogle().then(data => toast.success('you are successfully Loged in')).catch((error) => toast.error(error.message));
+    }
     return (
         <div>
-            <div className='text-left mt-10'>
+            <div className='hidden lg:block text-left mt-10'>
                 <h1 className='text-5xl fontB '>Welcome</h1>
                 <p className='fontA'>_to Registration Page</p>
             </div>
-            <div className='w-[90%] flex items-center  gap-5 lg:gap-10 flex-col md:flex-row  font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
+            <div className='w-[90%] mt-6 lg:mt-0  flex items-center  gap-5 lg:gap-10 flex-col md:flex-row  font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
                 <div className='w-full'>
-                    <div className="h-[200px]">
+                    <div className="h-[200px] hidden md:block">
                         <Lottie
                             options={{
                                 animationData: animationData,
@@ -41,7 +71,7 @@ const SignUp = () => {
                     <div className='mt-4 '>
                         <p className='fontA '>Login With / <Link className='underline text-yellow-600' to={'/login'}>Login</Link></p>
 
-                        <FcGoogle className='mt-2 btn btn-outline border-2 w-[90%] bg-slate-900 md:w-1/2 rounded-full text-lg py-2' />
+                        <FcGoogle onClick={handleGoogle} className='mt-2 btn btn-outline border-2 w-[90%] bg-slate-900 md:w-1/2 rounded-full text-lg py-2' />
 
                     </div>
 

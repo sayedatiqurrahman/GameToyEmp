@@ -1,13 +1,24 @@
 import Lottie from 'lottie-react-web';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import animationData from '../../../public/login-orange.json';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../Provider/AuthProvider';
 const Login = () => {
+    const { loginWithEmailAndPassword, loginWithGoogle } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
-    const onSubmit = data => { console.log(data); }
+    const onSubmit = data => {
+        console.log(data);
+        const email = data.email;
+        const password = data.password;
+        loginWithEmailAndPassword(email, password).then(data => toast.success('You are Succesfully logged in')).catch((error) => toast.error(error.message));
+        reset()
+    }
+    const handleGoogle = () => {
+        loginWithGoogle().then(data => toast.success('you are successfully Loged in')).catch((error) => toast.error(error.message));
+    }
 
     return (
         <>
@@ -15,7 +26,7 @@ const Login = () => {
                 <h1 className='text-5xl fontB '>Welcome</h1>
                 <p className='fontA'>_to Login Page</p>
             </div>
-            <div className='w-[90%] flex items-center  gap-5 lg:gap-10 flex-col md:flex-row  font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
+            <div className='w-[90%] mt-5 md:mt-0 flex items-center  gap-5 lg:gap-10 flex-col md:flex-row  font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
                 <div className='w-full'>
                     <div className="h-[200px]">
                         <Lottie
@@ -40,7 +51,7 @@ const Login = () => {
                     <div className='mt-4 '>
                         <p className='fontA '>Login With / <Link className='underline text-yellow-600' to={'/register'}>Register</Link></p>
                     </div>
-                    <FcGoogle className='mt-2 btn btn-outline border-2 w-[90%] bg-slate-900 md:w-1/2 rounded-full text-lg py-2' />
+                    <FcGoogle onClick={handleGoogle} className='mt-2 btn btn-outline border-2 w-[90%] bg-slate-900 md:w-1/2 rounded-full text-lg py-2' />
                 </form>
 
             </div>
