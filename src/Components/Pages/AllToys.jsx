@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { HiOutlineDocumentText } from 'react-icons/hi';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Loading from './Loading';
 
 const AllToys = () => {
     const { user } = useContext(AuthContext);
+    const navigation = useNavigation()
     const loadedDataToys = useLoaderData()
     const [toys, setToys] = useState(loadedDataToys)
     const handleSearch = (e) => {
@@ -35,6 +37,9 @@ const AllToys = () => {
             setToys(data)
             console.log(data);
         })
+    }
+    if (navigation.state === 'loading') {
+        return <Loading />
     }
     const handleDetails = () => {
         if (!user) {

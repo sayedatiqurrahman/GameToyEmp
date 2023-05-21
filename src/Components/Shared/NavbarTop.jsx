@@ -18,7 +18,7 @@ const NavbarTop = () => {
         <li><NavLink to={'/allToys'} className={({ isActive }) => isActive ? 'active' : 'default'}> All Toys</NavLink>
         </li>
         {user ? <>
-            <li><NavLink to={'/myToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>My Toys</NavLink>
+            <li><NavLink to={`/myToys`} className={({ isActive }) => isActive ? 'active' : 'default'}>My Toys</NavLink>
             </li>
             <li><NavLink to={'/addToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>Add A Toy</NavLink>
             </li>

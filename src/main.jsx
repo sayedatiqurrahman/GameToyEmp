@@ -14,6 +14,7 @@ import ToysDetails from './Components/Pages/ToysDetails.jsx'
 import SignUp from './Components/Pages/SignUp.jsx'
 import AuthProvider from './Components/Provider/AuthProvider.jsx'
 import PrivateRoute from './Components/Route/PrivateRoute.jsx'
+import UpdateToys from './Components/Pages/UpdateToys.jsx'
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <SignUp />
+      }, {
+        path: '/updateToy/:id',
+        element: <PrivateRoute><UpdateToys /></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://server-liard-nine.vercel.app/ToyDetails/${params.id}`)
       }
     ]
   }

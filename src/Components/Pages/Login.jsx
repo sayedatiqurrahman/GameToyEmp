@@ -3,21 +3,41 @@ import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import animationData from '../../../public/login-orange.json';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useNavigation } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../Provider/AuthProvider';
+import Loading from './Loading';
 const Login = () => {
+    const navigation = useNavigation()
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location?.state?.from.pathname || '/'
+
+    if (navigation.state === 'loading') {
+        return <Loading />
+    } else {
+        navigate(from)
+    }
+
+    console.log(location)
     const { loginWithEmailAndPassword, loginWithGoogle } = useContext(AuthContext)
     const { register, handleSubmit, reset } = useForm();
+    console.log(from);
     const onSubmit = data => {
         console.log(data);
         const email = data.email;
         const password = data.password;
-        loginWithEmailAndPassword(email, password).then(data => toast.success('You are Succesfully logged in')).catch((error) => toast.error(error.message));
+        loginWithEmailAndPassword(email, password).then(data => {
+            toast.success('You are Succesfully logged in')
+            navigate(from)
+        }).catch((error) => toast.error(error.message));
         reset()
     }
     const handleGoogle = () => {
-        loginWithGoogle().then(data => toast.success('you are successfully Loged in')).catch((error) => toast.error(error.message));
+        loginWithGoogle().then(data => {
+            toast.success('you are successfully Loged in')
+            navigate(from)
+        }).catch((error) => toast.error(error.message));
     }
 
     return (

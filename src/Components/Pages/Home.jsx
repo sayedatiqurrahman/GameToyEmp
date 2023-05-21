@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../Shared/Home/Banner';
 import Gallery from '../Shared/Home/Gallery';
 import Charecter from '../../assets/mobile-frame_1.gif'
 import ShopByCategory from '../Shared/Home/ShopByCategory';
 import gostAni from '../../assets/image03.gif';
+import { useNavigation } from 'react-router-dom';
+import Loading from './Loading';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Home = () => {
+    const { user, loading } = useContext(AuthContext)
+    const navigation = useNavigation()
+    if (navigation.state === 'loading' || loading) {
+        return <Loading />
+
+    }
+
     return (
         <div>
             {/* Header banner */}
