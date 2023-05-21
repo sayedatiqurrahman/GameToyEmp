@@ -21,6 +21,14 @@ const AddToys = () => {
     };
     return (
         <div className='w-[90%] font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
+            <div className='text-left'>
+                <h1 className='text-5xl fontB '>Welcome</h1>
+                <p className='fontA'>_to add Toy Page</p>
+            </div>
+
+            <h1 className='text-3xl text-center fontA mb-3'>
+                Add your Toys
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex gap-2 mb-2'>
                     <input required type='text' placeholder="Enter Toys Name..." className="input input-bordered rounded-full border-2 w-full"  {...register("name")} />

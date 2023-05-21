@@ -10,6 +10,10 @@ const SignUp = () => {
     const onSubmit = data => { console.log(data); }
     return (
         <div>
+            <div className='text-left mt-10'>
+                <h1 className='text-5xl fontB '>Welcome</h1>
+                <p className='fontA'>_to Registration Page</p>
+            </div>
             <div className='w-[90%] flex items-center  gap-5 lg:gap-10 flex-col md:flex-row  font-semibold absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 mx-auto lg:w-[60%] text-center'>
                 <div className='w-full'>
                     <div className="h-[200px]">

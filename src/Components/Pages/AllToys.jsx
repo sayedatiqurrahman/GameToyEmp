@@ -27,7 +27,10 @@ const AllToys = () => {
 
 
         <div className="overflow-x-auto mt-10 ">
-
+            <div className='text-left'>
+                <h1 className='text-7xl fontB '>Welcome</h1>
+                <p className='fontA'>_to All Toys Page</p>
+            </div>
 
             <form onSubmit={handleSearch} className='my-[130px] w-full max-w-xs mx-auto relative'>
                 <input type="text" name='text' placeholder="Type here..." className="input input-bordered border-2 border-slate-500 w-full max-w-xs rounded-full" />
