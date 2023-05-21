@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'lottie-react-web';
-import animationData from '../../public/astronauta.json';
-import animationData2 from '../../public/moving-galaxy.json';
+import animationData from '../../../public/astronauta.json';
+import animationData2 from '../../../public/moving-galaxy.json';
 import { Link, useRouteError } from 'react-router-dom';
 const ErrorPage = () => {
     const { data, status, statusText } = useRouteError()

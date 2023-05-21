@@ -49,7 +49,7 @@ const NavbarTop = () => {
                 </div>
                 {/* Right Side elements */}
                 <div className="navbar-end">
-                    <Link className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link>
+                    <Link to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link>
                 </div>
             </div>
         </div>

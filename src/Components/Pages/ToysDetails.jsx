@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
-import animationData from "../../public/man.json"
+import animationData from "../../../public/man.json"
 import toast from 'react-hot-toast';
 const ToysDetails = () => {
     const { _id, sellerName, subCategory, sellerEmail, rating, price, pictureURL, name, detailDescription, availableQuantity } = useLoaderData()

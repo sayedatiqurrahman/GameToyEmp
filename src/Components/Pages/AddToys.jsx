@@ -1,16 +1,22 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-hot-toast';
 
 const AddToys = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        fetch('http://localhost:5000/', {
+        fetch('https://server-liard-nine.vercel.app/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
 
-        }).then(response => response.json()).then(data => console.log(data));
+        }).then(response => response.json()).then(data => {
+            console.log(data)
+            if (data.insertedId) {
+                toast.success('Toys Added Successfully')
+            }
+        });
         reset()
     };
     return (
