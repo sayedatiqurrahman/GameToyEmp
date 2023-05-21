@@ -13,6 +13,7 @@ import ErrorPage from './Components/Pages/ErrorPage.jsx'
 import ToysDetails from './Components/Pages/ToysDetails.jsx'
 import SignUp from './Components/Pages/SignUp.jsx'
 import AuthProvider from './Components/Provider/AuthProvider.jsx'
+import PrivateRoute from './Components/Route/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,12 +33,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/allToys',
-        element: <AllToys />,
+        element: <PrivateRoute><AllToys /></PrivateRoute>,
         loader: () => fetch(`https://server-liard-nine.vercel.app`)
       },
       {
         path: '/addToys',
-        element: <AddToys />
+        element: <PrivateRoute><AddToys /></PrivateRoute>
       },
       {
         path: '/myToys',
@@ -60,6 +61,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-  <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </AuthProvider>
 )

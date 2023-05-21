@@ -1,18 +1,31 @@
 import Lottie from 'lottie-react-web';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import animationData from '../../../public/astronauta.json';
-import { HiLogin } from "react-icons/hi";
+import { HiLogin, HiLogout } from "react-icons/hi";
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-hot-toast';
 const NavbarTop = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        logOut().then(data => toast.success('Successfully logged out')).catch(err => toast.error(err.message))
+    }
+
     const menu = <>
         <li><NavLink to={'/'} className={({ isActive }) => isActive ? 'active' : 'default'}>Home </NavLink>
         </li>
         <li><NavLink to={'/allToys'} className={({ isActive }) => isActive ? 'active' : 'default'}> All Toys</NavLink>
         </li>
-        <li><NavLink to={'/myToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>My Toys</NavLink>
-        </li>
-        <li><NavLink to={'/addToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>Add A Toy</NavLink>
-        </li>
+        {user ? <>
+            <li><NavLink to={'/myToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>My Toys</NavLink>
+            </li>
+            <li><NavLink to={'/addToys'} className={({ isActive }) => isActive ? 'active' : 'default'}>Add A Toy</NavLink>
+            </li>
+        </> : ''
+
+        }
+
         <li><NavLink to={'/blog'} className={({ isActive }) => isActive ? 'active' : 'default'}>Blogs</NavLink>
         </li>
     </>
@@ -49,7 +62,13 @@ const NavbarTop = () => {
                 </div>
                 {/* Right Side elements */}
                 <div className="navbar-end">
-                    <Link to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link>
+                    {
+                        !user ? <Link to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link> : <>
+                            <div className="tooltip tooltip-bottom lg:tooltip-left" data-tip={user?.displayName}>
+                                <img className='h-10 w-10 rounded-full border-2 border-slate-700 ml-2' src={user?.photoURL} alt="" />
+                            </div>
+                            <Link onClick={handleLogout} to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Logout</span>  <HiLogout /></Link></>
+                    }
                 </div>
             </div>
         </div>
