@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 const ShopCard = ({ toy }) => {
     const { user } = useContext(AuthContext);
     const { _id, rating, price, pictureURL, name } = toy;
-    const navigate = useNavigate();
+ 
 
     const handleDetails = () => {
         if (!user) {

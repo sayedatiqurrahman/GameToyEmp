@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/allToys',
-        element: <PrivateRoute><AllToys /></PrivateRoute>,
+        element: <AllToys />,
         loader: () => fetch(`https://server-liard-nine.vercel.app`)
       },
       {

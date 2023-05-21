@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const AllToys = () => {
-
+    const { user } = useContext(AuthContext);
     const loadedDataToys = useLoaderData()
     const [toys, setToys] = useState(loadedDataToys)
     const handleSearch = (e) => {
@@ -34,7 +36,12 @@ const AllToys = () => {
             console.log(data);
         })
     }
+    const handleDetails = () => {
+        if (!user) {
+            toast.error("Please sign in to view details");
 
+        }
+    };
     return (
 
 
@@ -78,7 +85,7 @@ const AllToys = () => {
                                 <td>{toy.subCategory}</td>
                                 <td >${toy.price}</td>
                                 <td className='text-center'>{toy.availableQuantity}</td>
-                                <td> <Link to={`/toysDetails/${toy._id}`} className="fontA  btn btn-outline  rounded-full "> <span className='mr-2'>View Details</span> <HiOutlineDocumentText />
+                                <td> <Link onClick={handleDetails} to={`/toysDetails/${toy._id}`} className="fontA  btn btn-outline  rounded-full "> <span className='mr-2'>View Details</span> <HiOutlineDocumentText />
                                 </Link></td>
                             </tr>
                         )
