@@ -12,7 +12,9 @@ import Contact from '../Shared/Home/Contact';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 const Home = () => {
-
+    AOS.init({
+        duration: 1200,
+    })
     useEffect(() => {
         document.title = 'GameToyEmporium || Home'
     }, [])
@@ -44,12 +46,12 @@ const Home = () => {
             <div className='my-[130px]'>
                 <ShopByCategory />
             </div>
-            <div className='my-[130px]'>
+            <div data-aos="fade-down" className='my-[130px]'>
                 <h1 className='fontA text-center text-4xl  mb-10'>Sponsored Company</h1>
                 <Company />
             </div>
 
-            <div className='my-[130px]'>
+            <div className='my-[130px]' data-aos="fade-up">
                 <h1 className='fontA text-center text-4xl mb-10 '>Contact Us</h1>
                 <Contact />
             </div>
