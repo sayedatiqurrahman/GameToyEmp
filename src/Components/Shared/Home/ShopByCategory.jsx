@@ -45,8 +45,8 @@ const ShopByCategory = () => {
 
     return (
         <div>
-            <Tabs>
-                <TabList className='flex justify-center border-b border-[#aaa] mb-4'>
+            <Tabs className='w-full'>
+                <TabList className='flex w-full flex-wrap justify-center border-b border-[#aaa] mb-4'>
                     <Tab onClick={gamingHandle}>Gaming Accessories</Tab>
                     <Tab onClick={replicaHandle}>Replica Items</Tab>
                     <Tab onClick={actionHandle}>Action Figures</Tab>

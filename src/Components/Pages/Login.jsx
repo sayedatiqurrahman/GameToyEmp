@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react-web';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import animationData from '../../../public/login-orange.json';
@@ -8,6 +8,9 @@ import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from './Loading';
 const Login = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Login'
+    }, [])
     const navigation = useNavigation()
     const location = useLocation()
     const navigate = useNavigate()

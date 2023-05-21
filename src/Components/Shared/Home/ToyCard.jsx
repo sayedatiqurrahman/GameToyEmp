@@ -18,7 +18,7 @@ const ShopCard = ({ toy }) => {
     };
 
     return (
-        <div className="card w-96  glass rounded-lg shadow-xl">
+        <div className="card w-full  glass rounded-lg shadow-xl">
             <figure>
                 <img src={pictureURL} alt="Shoes" />
             </figure>

@@ -1,11 +1,14 @@
 import Lottie from 'lottie-react-web';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { useLoaderData } from 'react-router-dom';
 import animationData from "../../../public/man.json"
 import toast from 'react-hot-toast';
 const ToysDetails = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Toys Details';
+    }, [])
     const { _id, sellerName, subCategory, sellerEmail, rating, price, pictureURL, name, detailDescription, availableQuantity } = useLoaderData()
 
     const [disable, setDisable] = useState(false)

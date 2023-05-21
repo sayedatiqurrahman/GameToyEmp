@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Blog = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Blog'
+    }, [])
     return (
         <div>
             <div className='text-left mt-32'>

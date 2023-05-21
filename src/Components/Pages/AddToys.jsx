@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -6,6 +6,10 @@ import { useNavigation } from 'react-router-dom';
 import Loading from './Loading';
 
 const AddToys = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Add Toys'
+    }, [])
+
     const { register, handleSubmit, reset } = useForm();
 
     const { user, loading } = useContext(AuthContext)

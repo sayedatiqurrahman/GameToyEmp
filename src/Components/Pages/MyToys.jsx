@@ -9,6 +9,9 @@ import Loading from './Loading';
 import { toast } from 'react-hot-toast';
 
 const MyToys = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || My Toys'
+    }, [])
     const { user, loading } = useContext(AuthContext)
     const navigation = useNavigation()
     const [toys, setToys] = useState()

@@ -28,6 +28,12 @@ const NavbarTop = () => {
 
         <li><NavLink to={'/blog'} className={({ isActive }) => isActive ? 'active' : 'default'}>Blogs</NavLink>
         </li>
+
+        <li>
+            {
+                user && <Link onClick={handleLogout} to={'/login'} className=" flex text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Logout</span>  <HiLogout /></Link>
+            }
+        </li>
     </>
     return (
         <div>
@@ -63,11 +69,11 @@ const NavbarTop = () => {
                 {/* Right Side elements */}
                 <div className="navbar-end">
                     {
-                        !user ? <Link to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link> : <>
+                        !user ? <Link to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Login</span>  <HiLogin /></Link> :
                             <div className="tooltip tooltip-bottom lg:tooltip-left" data-tip={user?.displayName}>
                                 <img className='h-10 w-10 rounded-full border-2 border-slate-700 ml-2' src={user?.photoURL} alt="" />
                             </div>
-                            <Link onClick={handleLogout} to={'/login'} className="btn btn-outline bg-gray-300 text-black text-lg font-semibold fontA  rounded-full  md:px-7"><span className='mr-2'>Logout</span>  <HiLogout /></Link></>
+
                     }
                 </div>
             </div>

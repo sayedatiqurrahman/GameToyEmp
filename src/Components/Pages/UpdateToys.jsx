@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 
 const UpdateToys = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Update Toys'
+    }, [])
     const toy = useLoaderData()
     const { _id, sellerName, subCategory, sellerEmail, rating, price, pictureURL, name, detailDescription, availableQuantity } = useLoaderData()
 

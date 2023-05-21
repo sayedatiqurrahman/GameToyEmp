@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from 'lottie-react-web';
 import { useForm } from "react-hook-form";
@@ -10,8 +10,13 @@ import { getAuth, updateProfile } from "firebase/auth";
 import app from '../../../firebase.config';
 const auth = getAuth(app);
 const SignUp = () => {
+
+    useEffect(() => {
+        document.title = 'GameToyEmporium || Sign Up';
+    }, [])
+
     const { register, handleSubmit, reset } = useForm();
-    const { registerUser,  loginWithGoogle} = useContext(AuthContext)
+    const { registerUser, loginWithGoogle } = useContext(AuthContext)
 
     const onSubmit = data => {
 
@@ -35,7 +40,7 @@ const SignUp = () => {
         reset()
     }
 
-const handleGoogle = () => {
+    const handleGoogle = () => {
         loginWithGoogle().then(data => toast.success('you are successfully Loged in')).catch((error) => toast.error(error.message));
     }
     return (

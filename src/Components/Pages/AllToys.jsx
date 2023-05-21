@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HiOutlineDocumentText } from 'react-icons/hi';
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
@@ -6,6 +6,9 @@ import { toast } from 'react-hot-toast';
 import Loading from './Loading';
 
 const AllToys = () => {
+    useEffect(() => {
+        document.title = 'GameToyEmporium || All Toys'
+    }, [])
     const { user } = useContext(AuthContext);
     const navigation = useNavigation()
     const loadedDataToys = useLoaderData()
