@@ -39,7 +39,7 @@ const ShopCard = ({ toy }) => {
                 </div>
                 <div className="card-actions justify-end ">
                     <Link
-                        to={user && `/toysDetails/${_id}`}
+                        to={`/toysDetails/${_id}`}
                         onClick={handleDetails}
                         className="relative top-8 fontA text-2xl btn btn-outline w-full rounded-t-full border-b-0"
                     >

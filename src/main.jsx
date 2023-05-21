@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/toysDetails/:id',
-        element: <ToysDetails />,
+        element: <PrivateRoute><ToysDetails /></PrivateRoute>,
         loader: ({ params }) => fetch(`https://server-liard-nine.vercel.app/ToyDetails/${params.id}`)
       },
       {
