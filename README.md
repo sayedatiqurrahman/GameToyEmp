@@ -1,9 +1,11 @@
 <h1>Welcome to `Game Toy Emporium`</h1>
 <h1></h1>
-<h2>Website Live Link:</h2> <br/>
-https://gametoyemp.web.app/
+<h2>Website  Links:</h2> <br/>
 
+**[LiveLink](https://gametoyemp.web.app/)**
+>https://gametoyemp.web.app/
 
+<br/>
 **[LiveLink](https://github.com/sayedatiqurrahman/GameToyEmpServer)**
 >https://github.com/sayedatiqurrahman/GameToyEmpServer
 
